@@ -1,20 +1,17 @@
 require './object_oriented/drink'
-require './object_oriented/drink_type'
 require './object_oriented/coin'
 require './object_oriented/stock'
 
 class VendingMachine
-
   def initialize
-    @stock_of_coke = Stock.new(5) # コーラの在庫数
-    @stock_of_diet_coke = Stock.new(5) # ダイエットコーラの在庫数
-    @stock_of_tea = Stock.new(5) # お茶の在庫数
-    @number_of_100yen = [Coin::ONE_HUNDRED] * 10 # 100円玉の在庫
-    @change = [] # お釣り
+    @stock_of_coke = Stock.new(5)
+    @stock_of_diet_coke = Stock.new(5)
+    @stock_of_tea = Stock.new(5)
+    @number_of_100yen = [Coin::ONE_HUNDRED] * 10
+    @change = []
   end
 
   def buy(payment, kind_of_drink)
-    # 100円と500円だけ受け付ける
     if payment != Coin::ONE_HUNDRED && payment != Coin::FIVE_HUNDRED
       @change.push(payment)
       return nil
@@ -38,15 +35,15 @@ class VendingMachine
     end
 
     if payment == Coin::ONE_HUNDRED
-      @change.push(payment)
+      @number_of_100yen.push(payment)
     elsif payment == Coin::FIVE_HUNDRED then
       @change = @change.concat(calculate_change)
     end
 
     if kind_of_drink == DrinkType::COKE
-      @stock_of_coke.decrement 
+      @stock_of_coke.decrement
     elsif kind_of_drink == DrinkType::DIET_COKE then
-      @stock_of_diet_coke.decrement
+      @stock_of_diet_coke.decrement 1
     else
       @stock_of_tea.decrement
     end
@@ -59,10 +56,9 @@ class VendingMachine
     @change = []
     result
   end
-  
+
   def calculate_change
     @number_of_100yen.slice!(0, 4)
     [Coin::ONE_HUNDRED] * 4
   end
-
 end
