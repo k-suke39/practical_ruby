@@ -1,9 +1,5 @@
-require './object_oriented/drink/drink'
-require './object_oriented/money/coin'
-require './object_oriented/stock/stock'
-require './object_oriented/money/coin_mech'
-require './object_oriented/money/change'
-require './object_oriented/stock/storage'
+require './stock/storage'
+require './money/coin_mech'
 
 class VendingMachine
   def initialize

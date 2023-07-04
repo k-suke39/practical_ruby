@@ -1,3 +1,7 @@
+require './stock/stock'
+require './drink/drink_type'
+require './drink/drink'
+
 class Storage
   def initialize
     @stocks = {}

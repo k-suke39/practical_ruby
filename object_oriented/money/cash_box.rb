@@ -1,5 +1,5 @@
 # 100円硬貨の在庫を管理するクラス
-require './object_oriented/money/coin'
+require './money/coin'
 class CashBox
 
   def initialize(quantity)

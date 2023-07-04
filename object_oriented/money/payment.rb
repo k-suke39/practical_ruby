@@ -1,3 +1,6 @@
+require './money/change'
+require './money/coin'
+
 class Payment
   def initialize(coin)
     @coin = coin

@@ -1,5 +1,6 @@
-require './object_oriented/drink/drink'
-require './object_oriented/vending_machine'
+require './drink/drink'
+require './drink/drink_type'
+require './vending_machine'
 
 vm = VendingMachine.new
 
